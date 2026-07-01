@@ -33,15 +33,26 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     }
 
     return (
-        <div className="min-h-screen flex flex-col lg:flex-row w-full bg-[#F8FAFC] dark:bg-[#0A0F1C]">
+        <div className="min-h-screen grid grid-cols-1 lg:grid-cols-[256px_1fr] w-full bg-[#F8FAFC] dark:bg-[#0A0F1C]">
             {/* Sidebar — desktop always visible, mobile controlled by sidebarOpen */}
-            <AdminSidebar
-                className="w-64 flex-shrink-0 sticky top-0 h-screen"
-                isOpen={sidebarOpen}
-                onClose={() => setSidebarOpen(false)}
-            />
+            <div className="hidden lg:block w-full h-full">
+                <AdminSidebar
+                    className="w-full sticky top-0 h-screen"
+                    isOpen={sidebarOpen}
+                    onClose={() => setSidebarOpen(false)}
+                />
+            </div>
+            
+            {/* Mobile Sidebar Overlay (rendered outside the grid flow logic) */}
+            <div className="lg:hidden">
+                <AdminSidebar
+                    className="w-64"
+                    isOpen={sidebarOpen}
+                    onClose={() => setSidebarOpen(false)}
+                />
+            </div>
 
-            <div className="flex-1 flex flex-col min-w-0 w-full overflow-hidden">
+            <div className="flex flex-col min-w-0 w-full overflow-hidden">
                 {/* Mobile top bar — only shown on < lg */}
                 <div className="lg:hidden flex items-center gap-3 px-4 py-3 bg-[#1A3C5E] dark:bg-[#0D1B2E] border-b border-white/10 w-full">
                     <button
