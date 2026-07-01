@@ -33,9 +33,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     }
 
     return (
-        <div className="min-h-screen grid grid-cols-1 lg:grid-cols-[256px_1fr] w-full bg-[#F8FAFC] dark:bg-[#0A0F1C]">
-            {/* Sidebar — desktop always visible, mobile controlled by sidebarOpen */}
-            <div className="hidden lg:block w-full h-full">
+        <div className="min-h-screen flex w-full max-w-full bg-[#F8FAFC] dark:bg-[#0A0F1C]">
+            {/* Sidebar — desktop always visible (takes 260px), mobile is position:fixed overlay */}
+            <div className="hidden lg:block w-[260px] flex-shrink-0">
                 <AdminSidebar
                     className="w-full sticky top-0 h-screen"
                     isOpen={sidebarOpen}
@@ -43,18 +43,19 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 />
             </div>
             
-            {/* Mobile Sidebar Overlay (rendered outside the grid flow logic) */}
+            {/* Mobile Sidebar Overlay */}
             <div className="lg:hidden">
                 <AdminSidebar
-                    className="w-64"
+                    className="w-[260px]"
                     isOpen={sidebarOpen}
                     onClose={() => setSidebarOpen(false)}
                 />
             </div>
 
-            <div className="flex flex-col min-w-0 w-full overflow-hidden">
+            {/* Main Content Area */}
+            <div className="flex-1 min-w-0 max-w-full w-full ml-0 flex flex-col overflow-hidden">
                 {/* Mobile top bar — only shown on < lg */}
-                <div className="lg:hidden flex items-center gap-3 px-4 py-3 bg-[#1A3C5E] dark:bg-[#0D1B2E] border-b border-white/10 w-full">
+                <div className="lg:hidden flex items-center gap-3 px-4 py-3 bg-[#1A3C5E] dark:bg-[#0D1B2E] border-b border-white/10 w-full max-w-full">
                     <button
                         onClick={() => setSidebarOpen(true)}
                         className="p-2 text-white/70 hover:text-white rounded-md flex-shrink-0"
@@ -66,7 +67,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 </div>
 
                 {/* Page content */}
-                <main className="flex-1 min-w-0 w-full overflow-x-hidden overflow-y-auto bg-white dark:bg-[#111827] shadow-sm lg:rounded-l-2xl lg:my-4 lg:mr-4 p-4 sm:p-6 lg:p-8 lg:border border-[#E2E8F0] dark:border-[#1F2937]">
+                <main className="flex-1 min-w-0 max-w-full w-full overflow-x-hidden overflow-y-auto bg-white dark:bg-[#111827] shadow-sm lg:rounded-l-2xl lg:my-4 lg:mr-4 p-4 sm:p-6 lg:p-8 lg:border border-[#E2E8F0] dark:border-[#1F2937]">
                     {children}
                 </main>
             </div>
