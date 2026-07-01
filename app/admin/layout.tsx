@@ -33,7 +33,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     }
 
     return (
-        <div className="min-h-screen flex">
+        <div className="min-h-screen flex w-full max-w-[100vw] overflow-x-hidden">
             {/* Sidebar — desktop always visible, mobile controlled by sidebarOpen */}
             <AdminSidebar
                 className="w-64 flex-shrink-0 sticky top-0 h-screen"
