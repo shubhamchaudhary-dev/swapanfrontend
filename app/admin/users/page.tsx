@@ -110,19 +110,19 @@ export default function AdminUsersPage() {
     const showAdminOption = amIRootAdmin;
 
     return (
-        <div>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6 sm:mb-8">
+        <div className="w-full max-w-full overflow-hidden">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6 sm:mb-8 w-full">
                 <h1 className="font-serif text-2xl sm:text-3xl font-bold text-[#1e3a8a] dark:text-[#F1F5F9]">Manage Users</h1>
                 {!amIRootAdmin && (
-                    <div className="text-xs text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 px-3 py-1.5 rounded-lg">
+                    <div className="text-xs text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 px-3 py-1.5 rounded-lg w-fit">
                         ⚠ Only the Root Admin can assign or remove admin roles
                     </div>
                 )}
             </div>
 
-            <div className="bg-white dark:bg-[#1F2937] rounded-xl border border-[#E2E8F0] dark:border-[#374151] overflow-hidden">
-                <div className="overflow-x-auto">
-                    <table className="w-full text-left text-sm">
+            <div className="bg-white dark:bg-[#1F2937] rounded-xl border border-[#E2E8F0] dark:border-[#374151] overflow-hidden w-full max-w-full">
+                <div className="overflow-x-auto w-full">
+                    <table className="w-full text-left text-sm min-w-[700px]">
                         <thead className="bg-[#F1F5F9] dark:bg-[#1e293b] text-[#475569] dark:text-[#CBD5E1] uppercase text-xs tracking-wider border-b border-[#E2E8F0] dark:border-[#334155]">
                             <tr>
                                 <th className="px-6 py-4 font-semibold">Name</th>

@@ -33,7 +33,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     }
 
     return (
-        <div className="min-h-screen flex w-full">
+        <div className="min-h-screen flex w-full max-w-[100vw] overflow-x-hidden">
             {/* Sidebar — desktop always visible, mobile controlled by sidebarOpen */}
             <AdminSidebar
                 className="w-64 flex-shrink-0 sticky top-0 h-screen"
@@ -41,21 +41,21 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 onClose={() => setSidebarOpen(false)}
             />
 
-            <div className="flex-1 flex flex-col min-w-0">
+            <div className="flex-1 flex flex-col min-w-0 w-full max-w-full overflow-hidden">
                 {/* Mobile top bar — only shown on < lg */}
-                <div className="lg:hidden flex items-center gap-3 px-4 py-3 bg-[#1A3C5E] dark:bg-[#0D1B2E] border-b border-white/10">
+                <div className="lg:hidden flex items-center gap-3 px-4 py-3 bg-[#1A3C5E] dark:bg-[#0D1B2E] border-b border-white/10 w-full max-w-full">
                     <button
                         onClick={() => setSidebarOpen(true)}
-                        className="p-2 text-white/70 hover:text-white rounded-md min-w-[44px] min-h-[44px] flex items-center justify-center"
+                        className="p-2 text-white/70 hover:text-white rounded-md min-w-[44px] min-h-[44px] flex items-center justify-center flex-shrink-0"
                         aria-label="Open admin menu"
                     >
                         <Menu className="w-5 h-5" />
                     </button>
-                    <span className="text-white font-bold font-serif text-base">Admin Panel</span>
+                    <span className="text-white font-bold font-serif text-base truncate">Admin Panel</span>
                 </div>
 
                 {/* Page content */}
-                <main className="flex-1 min-w-0 overflow-auto bg-white dark:bg-[#111827] shadow-sm rounded-none lg:rounded-l-2xl my-0 lg:my-4 mr-0 lg:mr-4 p-4 sm:p-6 lg:p-8 border-0 lg:border border-[#E2E8F0] dark:border-[#1F2937] ml-0 lg:ml-4">
+                <main className="flex-1 min-w-0 w-full max-w-full overflow-x-hidden overflow-y-auto bg-white dark:bg-[#111827] shadow-sm rounded-none lg:rounded-l-2xl my-0 lg:my-4 mr-0 lg:mr-4 p-4 sm:p-6 lg:p-8 border-0 lg:border border-[#E2E8F0] dark:border-[#1F2937] ml-0 lg:ml-4">
                     {children}
                 </main>
             </div>
