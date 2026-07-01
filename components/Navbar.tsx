@@ -123,11 +123,11 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 bg-black/5 backdrop-blur-md md:hidden pt-[100px] px-4">
+        <div className="fixed inset-0 z-40 bg-black/5 backdrop-blur-md md:hidden pt-[100px] px-4 overflow-y-auto pb-10">
           <motion.div
             initial={{ opacity: 0, y: -10, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            className="bg-white/90 backdrop-blur-2xl border border-white/40 rounded-3xl p-5 shadow-[0_20px_40px_rgba(0,0,0,0.1)] flex flex-col gap-4 text-[#0F172A] max-h-[calc(100vh-120px)] overflow-y-auto"
+            className="bg-white/90 backdrop-blur-2xl border border-white/40 rounded-3xl p-5 shadow-[0_20px_40px_rgba(0,0,0,0.1)] flex flex-col gap-4 text-[#0F172A]"
           >
             <div className="flex flex-col gap-1">
               <span className="text-[11px] uppercase tracking-widest text-[#0044ff] font-bold px-3 pb-2">Navigation</span>
