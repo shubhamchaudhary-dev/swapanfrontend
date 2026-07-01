@@ -142,7 +142,7 @@ export default function PaperDetailPage({ params }: { params: { slug: string } }
     }
 
     return (
-        <div className="min-h-screen flex flex-col bg-white paper-reader-protected">
+        <div className="min-h-screen flex flex-col bg-white dark:bg-[#020617] paper-reader-protected">
             <Navbar />
 
             <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row gap-12">
@@ -152,12 +152,12 @@ export default function PaperDetailPage({ params }: { params: { slug: string } }
                         Article
                     </span>
                     
-                    <h1 className="font-serif text-xl sm:text-2xl leading-tight font-bold text-[#0F172A] mb-6 text-justify">
+                    <h1 className="font-serif text-xl sm:text-2xl leading-tight font-bold text-[#0F172A] dark:text-slate-100 mb-6 text-justify">
                         {paper.title}
                     </h1>
 
                     {/* Authors */}
-                    <div className="flex items-center gap-2 text-[#475569] mb-4">
+                    <div className="flex items-center gap-2 text-[#475569] dark:text-slate-300 mb-4">
                         <User className="w-4 h-4" />
                         <span className="text-sm font-medium">
                             {Array.isArray(paper.authors) ? getAuthorDisplayNames(paper.authors) : 'Unknown Authors'}
@@ -165,7 +165,7 @@ export default function PaperDetailPage({ params }: { params: { slug: string } }
                     </div>
 
                     {/* Metadata Row */}
-                    <div className="flex flex-wrap items-center gap-4 text-sm text-[#64748B] mb-8 border-b border-[#E2E8F0] pb-6">
+                    <div className="flex flex-wrap items-center gap-4 text-sm text-[#64748B] dark:text-slate-400 mb-8 border-b border-[#E2E8F0] dark:border-slate-800 pb-6">
                         <div className="flex items-center gap-1.5">
                             <BookOpen className="w-4 h-4" />
                             <span>Swapan Journal</span>
@@ -184,8 +184,8 @@ export default function PaperDetailPage({ params }: { params: { slug: string } }
 
                     {/* Abstract */}
                     <div className="mb-8">
-                        <h3 className="text-xl font-bold text-[#0F172A] mb-4">Abstract</h3>
-                        <div className="text-[#334155] text-[15px] leading-relaxed whitespace-pre-line text-justify">
+                        <h3 className="text-xl font-bold text-[#0F172A] dark:text-slate-100 mb-4">Abstract</h3>
+                        <div className="text-[#334155] dark:text-slate-300 text-[15px] leading-relaxed whitespace-pre-line text-justify">
                             {getPublicAbstract(paper.abstract)}
                         </div>
                     </div>
@@ -193,8 +193,8 @@ export default function PaperDetailPage({ params }: { params: { slug: string } }
                     {/* Keywords (if any) */}
                     {paper.keywords && paper.keywords.length > 0 && (
                         <div className="mb-8 text-sm text-justify">
-                            <span className="font-bold text-[#0F172A]">Keywords: </span>
-                            <span className="text-[#475569]">{paper.keywords.join(', ')}</span>
+                            <span className="font-bold text-[#0F172A] dark:text-slate-100">Keywords: </span>
+                            <span className="text-[#475569] dark:text-slate-300">{paper.keywords.join(', ')}</span>
                         </div>
                     )}
                     
@@ -203,7 +203,7 @@ export default function PaperDetailPage({ params }: { params: { slug: string } }
                     {/* Author Affiliations */}
                     {Array.isArray(paper.authors) && paper.authors.length > 0 && (
                         <div className="mb-12">
-                            <h3 className="font-serif text-xl font-bold text-[#1e3a8a] mb-6">Author Affiliations</h3>
+                            <h3 className="font-serif text-xl font-bold text-[#1e3a8a] dark:text-[#60a5fa] mb-6">Author Affiliations</h3>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {paper.authors.map((authorStr, idx) => {
                                     const parts = authorStr.split(' | ').map(p => p.trim());
@@ -212,9 +212,9 @@ export default function PaperDetailPage({ params }: { params: { slug: string } }
                                     const affiliation = designation;
                                     
                                     return (
-                                        <div key={idx} className="bg-[#F8FAFC] rounded-xl p-5 border border-[#E2E8F0]">
-                                            <h4 className="font-bold text-[#0F172A] mb-2">{name}</h4>
-                                            <p className="text-sm text-[#475569] leading-relaxed">
+                                        <div key={idx} className="bg-[#F8FAFC] dark:bg-slate-900 rounded-xl p-5 border border-[#E2E8F0] dark:border-slate-800">
+                                            <h4 className="font-bold text-[#0F172A] dark:text-slate-100 mb-2">{name}</h4>
+                                            <p className="text-sm text-[#475569] dark:text-slate-400 leading-relaxed">
                                                 {affiliation || "Affiliation not provided."}
                                             </p>
                                         </div>
@@ -262,8 +262,8 @@ export default function PaperDetailPage({ params }: { params: { slug: string } }
                                     )}
                                 </>
                             ) : (
-                                <div className="flex items-center justify-center h-full text-center p-8 bg-[#F8FAFC]">
-                                    <p className="text-[#64748B]">The formatted PDF for this paper has not yet been uploaded.</p>
+                                <div className="flex items-center justify-center h-full text-center p-8 bg-[#F8FAFC] dark:bg-slate-900">
+                                    <p className="text-[#64748B] dark:text-slate-400">The formatted PDF for this paper has not yet been uploaded.</p>
                                 </div>
                             )}
                         </div>
@@ -301,8 +301,8 @@ export default function PaperDetailPage({ params }: { params: { slug: string } }
                         </div>
 
                         {/* Download Card */}
-                        <div className="bg-[#F8FAFC] rounded-xl p-5 border border-[#E2E8F0] shadow-sm">
-                            <h3 className="font-bold text-[#0F172A] text-base mb-3">Download Paper</h3>
+                        <div className="bg-[#F8FAFC] dark:bg-slate-900 rounded-xl p-5 border border-[#E2E8F0] dark:border-slate-800 shadow-sm">
+                            <h3 className="font-bold text-[#0F172A] dark:text-slate-100 text-base mb-3">Download Paper</h3>
                             <Button
                                 onClick={handleDownload}
                                 disabled={downloading || isLocked || !paper.publishedPdfUrl}
@@ -311,17 +311,17 @@ export default function PaperDetailPage({ params }: { params: { slug: string } }
                                 <Download className="w-4 h-4" />
                                 {downloading ? 'Downloading...' : 'Download PDF'}
                             </Button>
-                            <p className="text-[11px] text-[#64748B] text-center">
+                            <p className="text-[11px] text-[#64748B] dark:text-slate-400 text-center">
                                 {isLocked ? 'Membership required to download.' : !paper.publishedPdfUrl ? 'PDF not available.' : 'Access the full paper in PDF format.'}
                             </p>
                         </div>
                         
                         {/* Bookmark Button */}
-                        <div className="bg-white rounded-xl border border-[#E2E8F0] p-4 shadow-sm">
+                        <div className="bg-white dark:bg-slate-900 rounded-xl border border-[#E2E8F0] dark:border-slate-800 p-4 shadow-sm">
                              <Button
                                 onClick={handleBookmark}
                                 variant="outline"
-                                className={`w-full h-11 flex items-center justify-center gap-2 rounded-lg border-[#E2E8F0] ${isBookmarked ? 'text-[#0077b5] bg-[#E6F3FF] border-[#BAE6FD]' : 'text-[#475569] hover:bg-[#F8FAFC]'}`}
+                                className={`w-full h-11 flex items-center justify-center gap-2 rounded-lg border-[#E2E8F0] dark:border-slate-800 ${isBookmarked ? 'text-[#0077b5] bg-[#E6F3FF] border-[#BAE6FD] dark:bg-[#0077b5]/20 dark:border-[#0077b5]/40' : 'text-[#475569] dark:text-slate-300 hover:bg-[#F8FAFC] dark:hover:bg-slate-800'}`}
                             >
                                 <BookmarkIcon className={`w-4 h-4 ${isBookmarked ? 'fill-current' : ''}`} />
                                 {isBookmarked ? 'Saved to Library' : 'Save to Library'}
