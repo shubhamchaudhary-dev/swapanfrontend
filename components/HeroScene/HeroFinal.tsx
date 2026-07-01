@@ -327,10 +327,25 @@ function Molecule(props: { basePosition?: [number, number, number], direction?: 
   useFrame((s) => {
     const t = s.clock.elapsedTime;
     if (orbitRef.current) {
-      // Slow orbit around the paper stack area
-      orbitRef.current.position.y = Math.sin(t * 0.3) * 0.4;
-      orbitRef.current.position.x = 2.5 + Math.cos(t * 0.15) * 1.5;
-      orbitRef.current.position.z = 1.0 + Math.sin(t * 0.15) * 1.5;
+      const isMobile = s.size.width <= 768;
+      
+      // Desktop parameters
+      let targetX = 2.5 + Math.cos(t * 0.15) * 1.5;
+      let targetY = Math.sin(t * 0.3) * 0.4;
+      let targetZ = 1.0 + Math.sin(t * 0.15) * 1.5;
+
+      // Mobile parameters (reduced radius and adjusted position)
+      if (isMobile) {
+        // Keep it closer to the center (1.2 instead of 2.5) and reduce orbit radius to 0.6
+        targetX = 1.2 + Math.cos(t * 0.15) * 0.6;
+        targetY = Math.sin(t * 0.3) * 0.2;
+        targetZ = 0.5 + Math.sin(t * 0.15) * 0.6;
+      }
+
+      // Smooth interpolation for responsive positioning
+      orbitRef.current.position.x = THREE.MathUtils.lerp(orbitRef.current.position.x, targetX, 0.05);
+      orbitRef.current.position.y = THREE.MathUtils.lerp(orbitRef.current.position.y, targetY, 0.05);
+      orbitRef.current.position.z = THREE.MathUtils.lerp(orbitRef.current.position.z, targetZ, 0.05);
     }
     if (molRef.current) {
       molRef.current.rotation.y = t * 0.25;
