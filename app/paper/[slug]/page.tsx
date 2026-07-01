@@ -152,7 +152,7 @@ export default function PaperDetailPage({ params }: { params: { slug: string } }
                         Article
                     </span>
                     
-                    <h1 className="font-serif text-xl sm:text-2xl leading-tight font-bold text-[#0F172A] mb-6">
+                    <h1 className="font-serif text-xl sm:text-2xl leading-tight font-bold text-[#0F172A] mb-6 text-justify">
                         {paper.title}
                     </h1>
 
