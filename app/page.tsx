@@ -91,7 +91,7 @@ export default function HomePage() {
         <section
           className="hero relative w-full overflow-hidden text-[#0F172A]"
           style={{
-            height: 'calc(100vh - 80px)',
+            minHeight: '100vh',
             background: 'linear-gradient(135deg, #ffffff 0%, #f0f5ff 50%, #e0ebff 100%)'
           }}
         >
@@ -102,8 +102,8 @@ export default function HomePage() {
 
           {/* ── HTML content — floats ABOVE the 3D canvas ── */}
           <div
-            className="relative w-full h-full flex pt-20 md:pt-28"
-            style={{ height: 'calc(100vh - 80px)', zIndex: 10 }}
+            className="relative w-full h-full flex pt-20 md:pt-28 pb-20"
+            style={{ minHeight: '100vh', zIndex: 10 }}
           >
             <div
               className="w-full mx-auto px-8 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-8 items-start"
