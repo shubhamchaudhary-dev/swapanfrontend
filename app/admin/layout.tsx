@@ -54,23 +54,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
             {/* Main Content Area */}
             <div id="admin-flex-1" className="flex-1 min-w-0 max-w-full w-full ml-0 flex flex-col overflow-hidden relative">
-                
-                {/* Debug Overlay */}
-                <script dangerouslySetInnerHTML={{ __html: `
-                    setInterval(() => {
-                        const body = document.body.offsetWidth;
-                        const layout = document.querySelector('#admin-layout')?.offsetWidth;
-                        const flex1 = document.querySelector('#admin-flex-1')?.offsetWidth;
-                        const debugEl = document.getElementById('debug-info');
-                        if (debugEl) {
-                            debugEl.innerText = 'Win:' + window.innerWidth + ' Body:' + body + ' Layout:' + layout + ' Flex1:' + flex1;
-                        }
-                    }, 500);
-                `}} />
-                <div id="debug-info" className="fixed top-12 right-0 z-[9999] bg-red-600 text-white p-2 font-mono text-xs opacity-80 pointer-events-none">
-                    Loading debug...
-                </div>
-
                 {/* Mobile top bar — only shown on < lg */}
                 <div className="lg:hidden flex items-center gap-3 px-4 py-3 bg-[#1A3C5E] dark:bg-[#0D1B2E] border-b border-white/10 w-full max-w-full">
                     <button
