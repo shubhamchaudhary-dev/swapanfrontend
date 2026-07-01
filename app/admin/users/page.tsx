@@ -110,7 +110,7 @@ export default function AdminUsersPage() {
     const showAdminOption = amIRootAdmin;
 
     return (
-        <div className="w-full max-w-full overflow-hidden">
+        <div className="w-full">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6 sm:mb-8 w-full">
                 <h1 className="font-serif text-2xl sm:text-3xl font-bold text-[#1e3a8a] dark:text-[#F1F5F9]">Manage Users</h1>
                 {!amIRootAdmin && (
@@ -120,7 +120,7 @@ export default function AdminUsersPage() {
                 )}
             </div>
 
-            <div className="bg-white dark:bg-[#1F2937] rounded-xl border border-[#E2E8F0] dark:border-[#374151] overflow-hidden w-full max-w-full">
+            <div className="bg-white dark:bg-[#1F2937] rounded-xl border border-[#E2E8F0] dark:border-[#374151] overflow-hidden w-full">
                 <div className="overflow-x-auto w-full">
                     <table className="w-full text-left text-sm min-w-[700px]">
                         <thead className="bg-[#F1F5F9] dark:bg-[#1e293b] text-[#475569] dark:text-[#CBD5E1] uppercase text-xs tracking-wider border-b border-[#E2E8F0] dark:border-[#334155]">
