@@ -19,7 +19,7 @@ export const viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
+      <body className="min-h-screen overflow-x-hidden bg-gradient-to-br from-[#FFFBEA]/50 to-[#FFFFFF] dark:bg-gradient-to-b dark:from-[#111111] dark:to-black text-[#0F172A] dark:text-[#F1F5F9]">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
         <script
           dangerouslySetInnerHTML={{
@@ -45,8 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-      </head>
-      <body className="min-h-screen overflow-x-hidden bg-gradient-to-br from-[#FFFBEA]/50 to-[#FFFFFF] dark:bg-gradient-to-b dark:from-[#111111] dark:to-black text-[#0F172A] dark:text-[#F1F5F9]">
+        
         <QueryProvider>
           <ThemeProvider>
             <AuthInit />
