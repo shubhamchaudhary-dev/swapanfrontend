@@ -131,6 +131,7 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-1">
               <span className="text-[11px] uppercase tracking-widest text-[#0044ff] font-bold px-3 pb-2">Navigation</span>
+              <MobileLink href="/" label="Home" onClick={closeMobile} />
               <MobileLink href="/browse" label="Publications" onClick={closeMobile} />
               <MobileLink href="/about" label="About" onClick={closeMobile} />
               <MobileLink href="/membership" label="Membership" onClick={closeMobile} />
