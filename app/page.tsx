@@ -91,7 +91,7 @@ export default function HomePage() {
         <section
           className="hero relative w-full overflow-hidden text-[#0F172A]"
           style={{
-            height: 'calc(100vh - 80px)',
+            minHeight: '100vh',
             background: 'linear-gradient(135deg, #ffffff 0%, #f0f5ff 50%, #e0ebff 100%)'
           }}
         >
@@ -102,8 +102,8 @@ export default function HomePage() {
 
           {/* ── HTML content — floats ABOVE the 3D canvas ── */}
           <div
-            className="relative w-full h-full flex pt-20 md:pt-28"
-            style={{ height: 'calc(100vh - 80px)', zIndex: 10 }}
+            className="relative w-full h-full flex pt-20 md:pt-28 pb-40"
+            style={{ minHeight: '100vh', zIndex: 10 }}
           >
             <div
               className="w-full mx-auto px-8 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-8 items-start"
@@ -113,33 +113,30 @@ export default function HomePage() {
               <div className="flex flex-col items-center md:items-start text-center md:text-left pt-6 md:pt-0 max-w-[560px] mx-auto md:mx-0">
 
                 {/* Eyebrow */}
-                <div className="flex items-center justify-center md:justify-start mb-4 md:mb-6 text-[13px] md:text-[14px] font-bold uppercase tracking-[0.18em] text-[#0044ff]">
-                  <div className="w-2 md:w-2.5 h-2 md:h-2.5 bg-[#0044ff] rounded-full mr-2 md:mr-3"></div>
-                  OPEN RESEARCH
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-pulse" />
+                  <span className="text-sm font-bold tracking-[0.2em] text-blue-600 uppercase">Open Research</span>
                 </div>
 
-                {/* Heading */}
-                <div className="mb-5 md:mb-7 w-full max-w-[560px]">
-                  <h1
-                    className={`${cormorant.className} font-semibold text-slate-900`}
-                    style={{ fontSize: 'clamp(2.75rem, 8vw, 3.5rem)', lineHeight: 0.9, letterSpacing: '-0.04em', color: '#0F172A' }}
+                <h1
+                  className="font-serif font-bold mb-6 tracking-tight text-left"
+                  style={{ fontSize: 'clamp(2.75rem, 8vw, 3.5rem)', lineHeight: 0.9, letterSpacing: '-0.04em', color: '#0F172A' }}
+                >
+                  Ideas.<br />
+                  <span className="text-blue-600">Published.</span>
+                </h1>
+                
+                <p className="text-xl md:text-2xl text-slate-700 mb-10 leading-relaxed font-light max-w-lg text-left" style={{ letterSpacing: '-0.01em' }}>
+                  Advancing global knowledge.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                  <Link
+                    href="/submit"
+                    className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0F172A] text-white rounded-full font-medium transition-all hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 overflow-hidden"
                   >
-                    Ideas.<br />
-                    <span className="text-[#0044ff]">Published.</span>
-                  </h1>
-                </div>
-
-                {/* Subheading */}
-                <div className="mb-7 md:mb-9 w-full max-w-[480px]">
-                  <p className="text-[17px] md:text-[20px] font-normal leading-[1.5] md:leading-[1.6] text-slate-800 px-4 md:px-0">
-                    Advancing global knowledge.
-                  </p>
-                </div>
-
-                {/* Button */}
-                <div className="flex justify-center md:justify-start items-center gap-4 mt-0">
-                  <Link href="/submit" className="px-6 py-2.5 md:px-6 md:py-2.5 bg-[#0a192f] hover:bg-[#0044ff] text-white text-[13px] font-semibold tracking-wide rounded-full transition-all shadow-[0_8px_20px_rgba(0,68,255,0.2)] hover:shadow-[0_12px_25px_rgba(0,68,255,0.35)] transform hover:-translate-y-1 inline-block">
-                    Submit Paper
+                    <span className="relative z-10 text-sm">Submit Paper</span>
+                    <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </Link>
                 </div>
               </div>
@@ -148,46 +145,48 @@ export default function HomePage() {
               <div className="hidden md:block" />
             </div>
           </div>
-        </section>
 
-        {/* STATS */}
-        <div className="stats-section no-card-stats">
-          <div className="stats-container-flex">
-            {/* PAPERS */}
-            <div className="stat-item-new stat-purple">
-              <div className="stat-icon-badge">
-                <FileText size={18} />
-              </div>
-              <div className="stat-circle">
-                <span className="stat-number-text">{stats.papers != null ? stats.papers.toLocaleString() : '19'}</span>
-                <span className="stat-label-text">PAPERS</span>
-                <div className="stat-dash"></div>
-              </div>
-            </div>
-            {/* AUTHORS */}
-            <div className="stat-item-new stat-green">
-              <div className="stat-icon-badge">
-                <Users size={18} />
-              </div>
-              <div className="stat-circle">
-                <span className="stat-number-text">{stats.authors != null ? stats.authors.toLocaleString() : '5'}</span>
-                <span className="stat-label-text">AUTHORS</span>
-                <div className="stat-dash"></div>
-              </div>
-            </div>
-            {/* JOURNALS */}
-            <div className="stat-item-new stat-orange">
-              <div className="stat-icon-badge">
-                <BookOpen size={18} />
-              </div>
-              <div className="stat-circle">
-                <span className="stat-number-text">{stats.institutions != null ? stats.institutions.toLocaleString() : '150'}</span>
-                <span className="stat-label-text">JOURNALS</span>
-                <div className="stat-dash"></div>
+          {/* STATS (Floating at the bottom of the hero) */}
+          <div className="absolute inset-x-0 bottom-8 z-20 pointer-events-none">
+            <div className="stats-section no-card-stats pointer-events-auto">
+              <div className="stats-container-flex">
+                {/* PAPERS */}
+                <div className="stat-item-new stat-purple">
+                  <div className="stat-icon-badge">
+                    <FileText size={18} />
+                  </div>
+                  <div className="stat-circle">
+                    <span className="stat-number-text">{stats.papers != null ? stats.papers.toLocaleString() : '19'}</span>
+                    <span className="stat-label-text">PAPERS</span>
+                    <div className="stat-dash"></div>
+                  </div>
+                </div>
+                {/* AUTHORS */}
+                <div className="stat-item-new stat-green">
+                  <div className="stat-icon-badge">
+                    <Users size={18} />
+                  </div>
+                  <div className="stat-circle">
+                    <span className="stat-number-text">{stats.authors != null ? stats.authors.toLocaleString() : '5'}</span>
+                    <span className="stat-label-text">AUTHORS</span>
+                    <div className="stat-dash"></div>
+                  </div>
+                </div>
+                {/* JOURNALS */}
+                <div className="stat-item-new stat-orange">
+                  <div className="stat-icon-badge">
+                    <BookOpen size={18} />
+                  </div>
+                  <div className="stat-circle">
+                    <span className="stat-number-text">{stats.institutions != null ? stats.institutions.toLocaleString() : '150'}</span>
+                    <span className="stat-label-text">JOURNALS</span>
+                    <div className="stat-dash"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* FEATURED AUTHORS & RESEARCHERS */}
         <FeaturedAuthors />
