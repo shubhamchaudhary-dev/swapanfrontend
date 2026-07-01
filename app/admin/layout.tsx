@@ -33,7 +33,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     }
 
     return (
-        <div className="min-h-screen flex w-full max-w-[100vw] overflow-x-hidden">
+        <div className="min-h-screen flex w-full">
             {/* Sidebar — desktop always visible, mobile controlled by sidebarOpen */}
             <AdminSidebar
                 className="w-64 flex-shrink-0 sticky top-0 h-screen"
@@ -55,7 +55,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 </div>
 
                 {/* Page content */}
-                <main className="flex-1 overflow-auto bg-white dark:bg-[#111827] shadow-sm rounded-none lg:rounded-l-2xl my-0 lg:my-4 mr-0 lg:mr-4 p-4 sm:p-6 lg:p-8 border-0 lg:border border-[#E2E8F0] dark:border-[#1F2937] ml-0 lg:ml-4">
+                <main className="flex-1 min-w-0 overflow-auto bg-white dark:bg-[#111827] shadow-sm rounded-none lg:rounded-l-2xl my-0 lg:my-4 mr-0 lg:mr-4 p-4 sm:p-6 lg:p-8 border-0 lg:border border-[#E2E8F0] dark:border-[#1F2937] ml-0 lg:ml-4">
                     {children}
                 </main>
             </div>
