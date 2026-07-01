@@ -343,9 +343,14 @@ function Molecule(props: { basePosition?: [number, number, number], direction?: 
       }
 
       // Smooth interpolation for responsive positioning
-      orbitRef.current.position.x = THREE.MathUtils.lerp(orbitRef.current.position.x, targetX, 0.05);
-      orbitRef.current.position.y = THREE.MathUtils.lerp(orbitRef.current.position.y, targetY, 0.05);
-      orbitRef.current.position.z = THREE.MathUtils.lerp(orbitRef.current.position.z, targetZ, 0.05);
+      if (!orbitRef.current.userData.initialized) {
+        orbitRef.current.position.set(targetX, targetY, targetZ);
+        orbitRef.current.userData.initialized = true;
+      } else {
+        orbitRef.current.position.x = THREE.MathUtils.lerp(orbitRef.current.position.x, targetX, 0.05);
+        orbitRef.current.position.y = THREE.MathUtils.lerp(orbitRef.current.position.y, targetY, 0.05);
+        orbitRef.current.position.z = THREE.MathUtils.lerp(orbitRef.current.position.z, targetZ, 0.05);
+      }
     }
     if (molRef.current) {
       molRef.current.rotation.y = t * 0.25;
