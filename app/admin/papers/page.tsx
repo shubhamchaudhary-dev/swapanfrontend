@@ -192,12 +192,12 @@ export default function AdminPapersPage() {
                     <table className="w-full text-left text-sm">
                         <thead className="bg-[#F1F5F9] dark:bg-[#1e293b] text-[#475569] dark:text-[#CBD5E1] uppercase text-xs tracking-wider border-b border-[#E2E8F0] dark:border-[#334155]">
                             <tr>
-                                <th className="px-6 py-4 font-semibold w-[30%]">Title</th>
-                                <th className="px-6 py-4 font-semibold w-[10%]">Status</th>
-                                <th className="px-6 py-4 font-semibold w-[20%]">Remarks</th>
-                                <th className="px-6 py-4 font-semibold w-[20%]">Author</th>
-                                <th className="px-6 py-4 font-semibold w-[10%]">Date</th>
-                                <th className="px-6 py-4 font-semibold text-right w-[10%]">Actions</th>
+                                <th className="px-6 py-4 font-semibold min-w-[300px] md:w-[30%]">Title</th>
+                                <th className="px-6 py-4 font-semibold min-w-[140px] md:w-[10%]">Status</th>
+                                <th className="px-6 py-4 font-semibold min-w-[200px] md:w-[20%]">Remarks</th>
+                                <th className="px-6 py-4 font-semibold min-w-[200px] md:w-[20%]">Author</th>
+                                <th className="px-6 py-4 font-semibold min-w-[120px] md:w-[10%]">Date</th>
+                                <th className="px-6 py-4 font-semibold text-right min-w-[150px] md:w-[10%]">Actions</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#374151] text-[#1e3a8a] dark:text-[#F1F5F9]">
@@ -208,7 +208,7 @@ export default function AdminPapersPage() {
                             ) : (
                                 papersData?.data?.map(p => (
                                     <tr key={p._id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#111827] transition-colors align-top">
-                                        <td className="px-6 py-4 font-medium break-all">{p.title}</td>
+                                        <td className="px-6 py-4 font-medium break-words">{p.title}</td>
                                         <td className="px-6 py-4">
                                             <span className={`px-2 py-1 rounded text-xs font-semibold uppercase ${
                                                 p.status === 'published' ? 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400' :
